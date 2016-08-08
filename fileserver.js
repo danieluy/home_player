@@ -32,20 +32,11 @@ function resFileList(req, res){
 
 }
 // config.files_folder
-function files_tree(path){
+function filesTree(path){
   const stats = fs.statSync(path);
   if(stats.isFile()){
-    files_tree.push()
+    // files_tree.push()
   }
-}
-
-function readDir(dir_path){
-  return new Promise((resolve, reject) => {
-    fs.readdir(dir_path, (err, files) => {
-      if(err) reject(err);
-      else resolve(files);
-    });
-  })
 }
 
 // const files_json = [];
@@ -58,6 +49,16 @@ function readDir(dir_path){
 //   });
 // });
 // console.log(files_json);
+
+function readDir(dir_path){
+  return new Promise((resolve, reject) => {
+    fs.readdir(dir_path, (err, files) => {
+      if(err) reject(err);
+      else resolve(files);
+    });
+  })
+}
+
 
 // GET '/playfile?filename=filename&type=type'
 function resFile(req, res){
