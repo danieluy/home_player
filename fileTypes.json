@@ -1,0 +1,48 @@
+{
+  "video": [
+    {
+      "extention": ".mp4",
+      "mimetype": "video/mp4"
+    },
+    {
+      "extention": ".avi",
+      "mimetype": "video/avi"
+    },
+    {
+      "extention": ".rmvb",
+      "mimetype": "application/vnd.rn-realmedia-vbr"
+    },
+    {
+      "extention": ".mkv",
+      "mimetype": "video/x-matroska"
+    }
+  ],
+  "img": [
+    {
+      "extention": ".jpg",
+      "mimetype": "image/jpeg"
+    },
+    {
+      "extention": ".jpeg",
+      "mimetype": "image/jpeg"
+    },
+    {
+      "extention": ".png",
+      "mimetype": "image/png"
+    },
+    {
+      "extention": ".bmp",
+      "mimetype": "image/bmp"
+    }
+  ],
+  "subtitles": [
+    {
+      "extention": ".srt",
+      "mimetype": "text/srt"
+    },
+    {
+      "extention": ".ssa",
+      "mimetype": "text/x-ssa"
+    }
+  ]
+}
