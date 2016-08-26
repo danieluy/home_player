@@ -4,7 +4,6 @@
   "description": "Home Media Player",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node fileserver.js"
   },
   "author": "danielsosa.dev@gmail.com",

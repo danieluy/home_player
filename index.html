@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Home PLayer</title>
+  </head>
+  <body>
+    <div id="titles_list"></div>
+
+    <div id="vid"></div>
+
+
+    <script type="text/javascript">
+    function play(e){
+      var raw_url = e.target.getAttribute('data-toplay');
+      var a = document.createElement('a');
+      a.href = raw_url;
+      var parsed_url = a.href;
+
+      var div_video = document.getElementById('vid')
+      var video = document.createElement('video');
+      var source = document.createElement('source');
+
+      source.src = parsed_url;
+      source.type = e.target.getAttribute('data-type');
+      video.controls = true;
+      video.autoplay = true;
+      video.appendChild(source);
+      while (div_video.firstChild) {
+        div_video.removeChild(div_video.firstChild);
+      }
+      div_video.appendChild(video);
+    }
+    // play('http://192.168.1.108:8080/playfile?filepath=/media/daniel/Pichu1000/Peliculas/Man of Steel (2013)/&filename=Man of Steel (2013)&fileextension=mp4');
+
+    function displayTitles(titles){
+      for (var key in titles) {
+        var titles_list = document.getElementById('titles_list');
+        var div = document.createElement('div');
+        div.id = key;
+        div.class = "title_card";
+        titles[key].forEach(function(title){
+          if(isVideo(title.fileextension) && title.fileextension === 'mp4'){
+            var h2 = document.createElement('h2');
+            h2.innerHTML = title.filename;
+            var h3 = document.createElement('h3');
+            h3.innerHTML = title.fileextension;
+            var button = document.createElement('button');
+            button.innerHTML = 'Play';
+            button.setAttribute("data-toplay", 'http://192.168.1.108:8080/playfile?filepath='+title.filepath+'&filename='+title.filename+'&fileextension='+title.fileextension);
+            button.setAttribute("data-type", (title.fileextension === 'mp4' ? 'video/mp4' : 'video/webm'));
+            button.addEventListener('click', play);
+            div.appendChild(h2);
+            div.appendChild(h3);
+            div.appendChild(button);
+          }
+        });
+        titles_list.appendChild(div);
+      }
+    }
+
+    function isVideo(ext){
+      switch (ext) {
+        case 'mp4':
+          return true;
+        case 'avi':
+          return true;
+        case 'rmvb':
+          return true;
+        case 'mkv':
+          return true;
+        case 'mpg':
+          return true;
+        case 'mpe':
+          return true;
+        case 'mpeg':
+          return true;
+        default:
+          return false
+      }
+    }
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function(){
+      if(xhttp.readyState === 4 && xhttp.status === 200){
+        displayTitles(JSON.parse(xhttp.responseText));
+      }
+    };
+    xhttp.open('GET', 'http://192.168.1.108:8080/', true);
+    xhttp.send();
+    </script>
+  </body>
+</html>

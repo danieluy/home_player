@@ -1,48 +1,64 @@
 {
   "video": [
     {
-      "extention": ".mp4",
+      "extension": "mp4",
       "mimetype": "video/mp4"
     },
     {
-      "extention": ".avi",
+      "extension": "avi",
       "mimetype": "video/avi"
     },
     {
-      "extention": ".rmvb",
+      "extension": "rmvb",
       "mimetype": "application/vnd.rn-realmedia-vbr"
     },
     {
-      "extention": ".mkv",
+      "extension": "mkv",
       "mimetype": "video/x-matroska"
+    },
+    {
+      "extension": "mpg",
+      "mimetype": "video/mpeg"
+    },
+    {
+      "extension": "mpe",
+      "mimetype": "video/mpeg"
+    },
+    {
+      "extension": "mpeg",
+      "mimetype": "video/mpeg"
     }
   ],
   "img": [
     {
-      "extention": ".jpg",
+      "extension": "jpg",
       "mimetype": "image/jpeg"
     },
     {
-      "extention": ".jpeg",
+      "extension": "jpeg",
       "mimetype": "image/jpeg"
     },
     {
-      "extention": ".png",
+      "extension": "png",
       "mimetype": "image/png"
     },
     {
-      "extention": ".bmp",
+      "extension": "bmp",
       "mimetype": "image/bmp"
     }
   ],
   "subtitles": [
     {
-      "extention": ".srt",
+      "extension": "srt",
       "mimetype": "text/srt"
     },
     {
-      "extention": ".ssa",
+      "extension": "ssa",
       "mimetype": "text/x-ssa"
+    },
+    {
+      "extension": "sub",
+      "mimetype": "image/vnd.dvb.subtitle"
     }
   ]
 }
