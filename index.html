@@ -3,9 +3,13 @@
   <head>
     <meta charset="utf-8">
     <title>Home PLayer</title>
+    <link rel="stylesheet" href="./css/style.css">
   </head>
   <body>
-    <div id="titles_list"></div>
+
+    <div id="play_list"></div>
+
+    <div id="download_list"></div>
 
     <div id="vid"></div>
 
@@ -35,27 +39,40 @@
 
     function displayTitles(titles){
       for (var key in titles) {
-        var titles_list = document.getElementById('titles_list');
+        var play_list = document.getElementById('play_list');
+        var download_list = document.getElementById('download_list');
         var div = document.createElement('div');
         div.id = key;
-        div.class = "title_card";
+        div.setAttribute('class', 'title_card');
         titles[key].forEach(function(title){
+          var h2 = document.createElement('h2');
+          h2.innerHTML = title.filename;
+          var h3 = document.createElement('h3');
+          h3.innerHTML = title.fileextension;
           if(isVideo(title.fileextension) && title.fileextension === 'mp4'){
-            var h2 = document.createElement('h2');
-            h2.innerHTML = title.filename;
-            var h3 = document.createElement('h3');
-            h3.innerHTML = title.fileextension;
             var button = document.createElement('button');
             button.innerHTML = 'Play';
             button.setAttribute("data-toplay", 'http://192.168.1.108:8080/playfile?filepath='+title.filepath+'&filename='+title.filename+'&fileextension='+title.fileextension);
             button.setAttribute("data-type", (title.fileextension === 'mp4' ? 'video/mp4' : 'video/webm'));
+            button.setAttribute("class", 'play-button');
             button.addEventListener('click', play);
             div.appendChild(h2);
             div.appendChild(h3);
             div.appendChild(button);
+            play_list.appendChild(div);
+          }
+          else if(isVideo(title.fileextension)){
+            var a = document.createElement('a');
+            a.innerHTML = 'Descargar';
+            a.href = 'http://192.168.1.108:8080/playfile?filepath='+title.filepath+'&filename='+title.filename+'&fileextension='+title.fileextension;
+            a.download = true;
+            a.setAttribute('class', 'button-link');
+            div.appendChild(h2);
+            div.appendChild(h3);
+            div.appendChild(a);
+            download_list.appendChild(div);
           }
         });
-        titles_list.appendChild(div);
       }
     }
 
